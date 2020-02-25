@@ -5,7 +5,8 @@ import {
   View,
   Button,
   TextInput,
-  FlatList
+  FlatList,
+  Modal
 } from "react-native";
 
 const GoalInput = props => {
@@ -15,15 +16,25 @@ const GoalInput = props => {
     setEnteredGoal(enteredGoal);
   };
 
+  const onAddGoalHandler = () => {
+    props.onAddGoal(enteredGoal);
+    setEnteredGoal('');
+  }
+
   return (
+    <Modal visible={props.visible} animationType="slide">
     <View style={styles.inputContainer}>
       <TextInput
         placeholder="Your goal"
         style={styles.input}
         onChangeText={goalInputHandler}
       />
-      <Button title="ADD" onPress={props.onAddGoal.bind(this, enteredGoal)} />
+      <View style={styles.buttonContainer}>
+       <Button title="CANCEL" color="red" onPress={props.onCancel}/>
+       <Button title="ADD" onPress={onAddGoalHandler} />
+      </View>
     </View>
+    </Modal>
   );
 };
 
@@ -32,9 +43,19 @@ const styles = StyleSheet.create({
     width: "80%",
     borderWidth: 1,
     borderColor: "gray",
-    padding: 5
+    padding: 5,
+    marginBottom: 10
   },
-  inputContainer: { flexDirection: "row", justifyContent: "space-between" }
+  inputContainer: {
+    flex:1, 
+    alignItems:"center", 
+    justifyContent: "center" 
+  },
+  buttonContainer: {
+    flexDirection:'row',
+    justifyContent: 'space-between',
+    width: '60%'
+  }
 });
 
 export default GoalInput;
