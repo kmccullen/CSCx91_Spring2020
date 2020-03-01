@@ -1,19 +1,27 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet,   
+  ScrollView,
+  Text,
+  Image,
+  View,
+  Button} from 'react-native';
+  import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
+import Login from './components/login/Login';
+
 
 export default function App() {
+
+  // const someFunction = () => {console.log('ok')}
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Login />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    flex: 1
+  }
 });
