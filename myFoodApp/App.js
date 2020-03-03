@@ -1,23 +1,25 @@
 import React from 'react';
 import { StyleSheet,   
-  ScrollView,
-  Text,
-  Image,
-  View,
-  Button} from 'react-native';
-  import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
+  Dimensions,
+  View} from 'react-native';
 import Login from './components/login/Login';
 
 
 export default function App() {
 
-  // const someFunction = () => {console.log('ok')}
+  const onLayout = (e)  => {
+    const {width, height} = Dimensions.get('window')
+    console.log(width, height)
+  }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} onLayout={onLayout.bind(this)}
+    >
       <Login />
     </View>
   );
+
+
 }
 
 const styles = StyleSheet.create({

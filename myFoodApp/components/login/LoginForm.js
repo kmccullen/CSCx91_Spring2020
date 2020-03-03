@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useState } from "react";
 import { StyleSheet,   
   ScrollView,
   Text,
   Image,
+  Button,
   View,
   KeyboardAvoidingView,
   TextInput,
   TouchableOpacity} from 'react-native';
+import Register from '../register/Register';
+import Modal from "react-native-modal";
+import FontAwesome, { BrandIcons, SolidIcons } from 'react-native-fontawesome';
+
 
 
   const LoginForm = props  => {
+
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    toggleModal = () => {
+      setIsModalVisible(!isModalVisible)
+     // this.setState({ isModalVisible: !this.state.isModalVisible });
+    };
 
   return (
     <View style={styles.container}>
@@ -37,8 +49,16 @@ import { StyleSheet,
         <Text style={styles.otherButtonText}>Forget Password</Text>
     </TouchableOpacity>
     <TouchableOpacity style={{paddingTop: 10}}>
-        <Text style={styles.otherButtonText}>SIGNUP</Text>
+        <Text style={styles.otherButtonText} onPress={toggleModal} >SIGNUP</Text>
     </TouchableOpacity>
+    <Modal isVisible={isModalVisible}>
+          <View style={{ flex: 1 }}>
+          <Button style={styles.cancelBtn} title="X" onPress={toggleModal} />
+      {/* <FontAwesome style={{fontSize: 32}} icon={BrandIcons.github}/> */}
+
+            <Register />
+          </View>
+        </Modal>
     </View>
     
     </View >
@@ -78,6 +98,10 @@ const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  cancelBtn: {
+    width: 15,
+    backgroundColor: '#e5732c' 
   }
 });
 
