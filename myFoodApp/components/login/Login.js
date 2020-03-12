@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet,   
   KeyboardAvoidingView,
   Image,
@@ -7,21 +7,20 @@ import { StyleSheet,
 import LoginForm from './LoginForm';
 
 
-  const Login = props  => {
-
-  // const someFunction = () => {console.log('ok')}
-
-  return (
-    <KeyboardAvoidingView behavior="padding" style={styles.container}>
-      <View style={styles.logoContainer}>
-        <Image style={styles.logo} source={require('../../assets/logo_MyFood.png')}/>
-      </View>
-      <View>
-        <LoginForm />
-      </View>
-      <View style={{ flex : 1 }} />
-    </KeyboardAvoidingView>
-  );
+  export default class Login extends Component {
+  render() {
+    return (
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
+        <View style={styles.logoContainer}>
+          <Image style={styles.logo} source={require('../../assets/logo_MyFood.png')}/>
+        </View>
+        <View>
+          <LoginForm />
+        </View>
+        <View style={{ flex : 1 }} />
+      </KeyboardAvoidingView>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
@@ -35,5 +34,3 @@ const styles = StyleSheet.create({
     flexGrow: 1
   }
 });
-
-export default Login;

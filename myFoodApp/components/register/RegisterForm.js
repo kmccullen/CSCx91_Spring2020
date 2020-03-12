@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet,   
   ScrollView,
   Text,
@@ -7,66 +7,106 @@ import { StyleSheet,
   KeyboardAvoidingView,
   TextInput,
   TouchableOpacity} from 'react-native';
+import * as yup from 'yup';
+import {Formik} from 'formik';
+
+  const registerFormValidation = yup.object({
+    firstname: yup.string().trim().required(),
+    lastname: yup.string().trim().required,
+    username: yup.string().trim().required().min(6),
+    password: yup.string().required().min(6),
+    confirmPassword: yup.string().required().test(function(value){
+      return this.parent.password == value;
+    })
+  });
+
+export default class RegisterForm extends Component {
+    render() {
+      return (
+        <View>
+          <Formik
+            initialValues={{ firstname: '', lastname: '', username: '', password: '', confirmPassword: ''}}
+            // validationSchema = {registerFormValidation}
+            onSubmit={(values) => {
+              console.log(values);
+            }}
+          >
+            {props => (
+              <View style={styles.container}>
+                <View style={styles.nameContainer}>
+                  <TextInput
+                    placeholder="Firstname"
+                    placeholderTextColor="#000"
+                    returnKeyType="next"
+                    autoCapitalize='sentences'
+                    autoCorrect={false}
+                    style={styles.firstnameContainer}
+                    onChangeText={props.handleChange('firstname')}
+                    value = {props.values.firstname}
+                  />
+                  {/* <Text>{props.errors.title}</Text> */}
+
+                  <TextInput
+                    placeholder="Lastname"
+                    placeholderTextColor="#000"
+                    returnKeyType="next"
+                    autoCapitalize='sentences'
+                    autoCorrect={false}
+                    style={styles.firstnameContainer}
+                    onChangeText={props.handleChange('lastname')}
+                    value = {props.values.lastname}
+                  />
+                </View>
+
+                <TextInput
+                  placeholder= "Username"
+                  placeholderTextColor="#000"
+                  returnKeyType="next"
+                  autoCapitalize='none'
+                  autoCorrect={false}
+                  style={styles.input}
+                  onChangeText={props.handleChange('username')}
+                  value = {props.values.username}
+                />
+                <TextInput
+                  placeholder= "Password "
+                  placeholderTextColor="#000"
+                  secureTextEntry
+                  returnKeyType="go"
+                  style={styles.input}
+                  onChangeText={props.handleChange('password')}
+                  value = {props.values.password}
+                />
+                <TextInput
+                  placeholder= "Confirm Password "
+                  placeholderTextColor="#000"
+                  secureTextEntry
+                  returnKeyType="go"
+                  style={styles.input}
+                  onChangeText={props.handleChange('confirmPassword')}
+                  value = {props.values.confirmPassword}
+                />
+
+                <View style= {styles.button}>
+                <TouchableOpacity title ="Submit" onPress={props.handleSubmit} style={styles.buttonContainer}>
+                  <Text style={styles.buttonText}>REGISTER</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{paddingTop: 10}}>
+                  <Text style={styles.otherButtonText}>Already have an account? Sign in</Text>
+                </TouchableOpacity>
+                </View>
+
+              </View >
+
+            )}
+          </Formik>
+        </View>
 
 
-  const RegisterForm = props  => {
 
-  return (
-    <View style={styles.container}>
-    <View style={styles.nameContainer}>
-    <TextInput
-    placeholder="Firstname"
-    placeholderTextColor="#000"
-    returnKeyType="next"
-    autoCapitalize='sentences'
-    autoCorrect={false}
-    style={styles.firstnameContainer}
-    />
-    <TextInput
-    placeholder="Lastname"
-    placeholderTextColor="#000"
-    returnKeyType="next"
-    autoCapitalize='sentences'
-    autoCorrect={false}
-    style={styles.firstnameContainer}
-    />
-    </View>
-    
-     <TextInput 
-     placeholder= "Username"
-     placeholderTextColor="#000"
-     returnKeyType="next"
-     autoCapitalize='none'
-     autoCorrect={false}
-     style={styles.input}
-     />
-     <TextInput 
-     placeholder= "Password "
-     placeholderTextColor="#000"
-     secureTextEntry
-     returnKeyType="go"
-     style={styles.input}
-     />
-     <TextInput 
-     placeholder= "Confirm Password "
-     placeholderTextColor="#000"
-     secureTextEntry
-     returnKeyType="go"
-     style={styles.input}
-     />
+      );
+    }
 
-    <View style= {styles.button}>
-    <TouchableOpacity style={styles.buttonContainer}>
-        <Text style={styles.buttonText}>REGISTER</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={{paddingTop: 10}}>
-        <Text style={styles.otherButtonText}>Already have an account? Sign in</Text>
-    </TouchableOpacity>
-    </View>
-    
-    </View >
-
-  );
 };
 
 const styles = StyleSheet.create({
@@ -122,5 +162,3 @@ const styles = StyleSheet.create({
   }
 
 });
-
-export default RegisterForm;

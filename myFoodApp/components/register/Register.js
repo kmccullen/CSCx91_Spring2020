@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet,   
   KeyboardAvoidingView,
   Image,
@@ -8,21 +8,20 @@ import { StyleSheet,
 import RegisterForm from './RegisterForm';
 
 
-  const Register = props  => {
-
-  // const someFunction = () => {console.log('ok')}
-
-  return (
-    <KeyboardAvoidingView behavior="padding" style={styles.container}>
-      <View style={styles.logoContainer}>
-        <Image style={styles.logo} source={require('../../assets/logo_MyFood.png')}/>
-      </View>
-      <View>
-        <RegisterForm />
-      </View>
-      <View style={{ flex : 1 }} />
-    </KeyboardAvoidingView>
-  );
+  export default class Register extends Component {
+  render() {
+    return (
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
+        <View style={styles.logoContainer}>
+          <Image style={styles.logo} source={require('../../assets/logo_MyFood.png')}/>
+        </View>
+        <View>
+          <RegisterForm />
+        </View>
+        <View style={{ flex : 1 }} />
+      </KeyboardAvoidingView>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
@@ -37,5 +36,3 @@ const styles = StyleSheet.create({
   }
 
 });
-
-export default Register;
