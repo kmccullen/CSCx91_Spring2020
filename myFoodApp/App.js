@@ -4,6 +4,7 @@ import { StyleSheet,
   View} from 'react-native';
 import Login from './components/login/Login';
 import Home from './components/home/Home';
+import Fridge from './components/fridge/Fridge';
 
 
 export default function App() {
