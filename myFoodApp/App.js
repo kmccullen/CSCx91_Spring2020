@@ -3,6 +3,7 @@ import { StyleSheet,
   Dimensions,
   View} from 'react-native';
 import Login from './components/login/Login';
+import Home from './components/home/Home';
 
 
 export default function App() {
