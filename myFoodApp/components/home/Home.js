@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Button, TouchableOpacity, Image, ScrollView } f
 
 export default class Home extends Component {
 render() {
+  const { navigate } = this.props.navigation;
+
   return (
     <View style={{padding: 50, alignItems: 'center', backgroundColor: '#e0f7f3'}}>
 
@@ -24,7 +26,7 @@ render() {
       <View style= {{padding: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch', width: '80%'}}>
 
       <View>
-      <TouchableOpacity onPress={() => {alert("This will open the Fridge Page");}}>
+      <TouchableOpacity onPress={() => { navigate("Fridge") }}>
         <Image style={{width: 80, height: 80}}
         source={require ('../../assets/fridge.png')}>
         </Image>

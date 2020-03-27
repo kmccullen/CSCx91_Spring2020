@@ -8,13 +8,16 @@ import { StyleSheet,
   KeyboardAvoidingView,
   TextInput,
   TouchableOpacity} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Register from '../register/Register';
 import Modal from "react-native-modal";
 import FontAwesome, { BrandIcons, SolidIcons } from 'react-native-fontawesome';
 
-
-
   const LoginForm = props  => {
+      
+    onPressLoginButton = () => {
+        props.navigation.navigate("Home");
+    };
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -42,7 +45,7 @@ import FontAwesome, { BrandIcons, SolidIcons } from 'react-native-fontawesome';
      />
 
     <View style= {styles.button}>
-    <TouchableOpacity style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.buttonContainer} onPress={this.onPressLoginButton}>
         <Text style={styles.buttonText}>LOGIN</Text>
     </TouchableOpacity>
     <TouchableOpacity style={{paddingTop: 20}}>
