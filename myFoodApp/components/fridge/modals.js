@@ -12,7 +12,7 @@ import { StyleSheet,
   return (
         <Modal visible = {props.visible}>
             <View style = {styles.myModal}>
-                <Button title = "go back"/>
+                <Button title = "go back" onPress={props.onClose}/>
             </View>
         </Modal>
   );
