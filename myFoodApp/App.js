@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from './components/login/Login';
 import Home from './components/home/Home';
 import Fridge from './components/fridge/Fridge';
+import Scanner from './components/scanner/Scanner';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ export default function App() {
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Home" component={Home} options={{ headerLeft: null }} />
           <Stack.Screen name="Fridge" component={Fridge} />
+          <Stack.Screen name="Scanner" component={Scanner} />
           </Stack.Navigator>
     </NavigationContainer>
   );
