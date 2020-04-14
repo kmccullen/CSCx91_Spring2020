@@ -42,7 +42,7 @@ render() {
         </View>
 
         <View style= {styles.iconView}>
-        <TouchableOpacity onPress={() => {alert("This will open the List Scanner Page");}}>
+        <TouchableOpacity onPress={() => { navigate("Scanner") }}>
         <Image style={styles.icons}
         source={require ('../../assets/grocery_list.png')}>
         </Image>
