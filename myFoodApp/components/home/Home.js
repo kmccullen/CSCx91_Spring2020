@@ -50,7 +50,7 @@ render() {
         </View>
 
         <View style= {styles.iconView}>
-        <TouchableOpacity onPress={() => {alert("This will open the Shopping Cart? Page");}}>
+        <TouchableOpacity onPress={() => {navigate("ShoppingCart")}}>
         <Image style={styles.icons}
         source={require ('../../assets/shopping_cart.png')}>
         </Image>
