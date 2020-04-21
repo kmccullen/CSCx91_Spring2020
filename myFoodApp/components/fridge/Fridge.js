@@ -5,7 +5,6 @@ import { defaultProps } from 'react-native/Libraries/Components/Keyboard/Keyboar
 
 
 export default class Fridge extends Component {
-
     constructor(props) {
         super(props);
     
@@ -19,7 +18,7 @@ export default class Fridge extends Component {
     }
 
     render() {
-
+      const { navigate } = this.props.navigation;
   return (
     <View style={styles.container}>
 {/* Top Row of App */}
@@ -36,7 +35,7 @@ export default class Fridge extends Component {
         <View style={styles.fridgeGrid}>
           <View style={styles.fridgeRow}>
             <View style={styles.rowItems}>
-            <TouchableOpacity onPress={this.toggleModal} style={styles.fridgeButtons}>
+            <TouchableOpacity onPress={() => { navigate("Inside your Fridge") }} style={styles.fridgeButtons}>
                 <View>
                 <Text style={{fontSize: 24}}>Freezer</Text>
                 </View>

@@ -10,7 +10,7 @@ import Home from './components/home/Home';
 import Fridge from './components/fridge/Fridge';
 import Scanner from './components/scanner/Scanner';
 import ShoppingCart from './components/shoppingCart/shoppingCart';
-
+import Inside from "./components/inside/inside";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -28,6 +28,7 @@ export default function App() {
           <Stack.Screen name="Fridge" component={Fridge} />
           <Stack.Screen name="Scanner" component={Scanner} />
           <Stack.Screen name="ShoppingCart" component={ShoppingCart} />
+          <Stack.Screen name="Inside your Fridge" component={Inside}/>
           </Stack.Navigator>
     </NavigationContainer>
   );
