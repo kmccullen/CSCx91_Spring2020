@@ -22,15 +22,7 @@ export default class Fridge extends Component {
   return (
     <View style={styles.container}>
 {/* Top Row of App */}
-      <View style={styles.topRow}>
-        <TouchableOpacity style={styles.topButtons}>
-          <Text>Test </Text>
-        </TouchableOpacity>
-        <Image style={styles.topLogo}source={require('../../assets/logo_MyFood.png')}/>
-        <TouchableOpacity style={styles.topButtons}>
-          <Text>Test </Text>
-        </TouchableOpacity>
-      </View>
+
 {/* First Row of Fridge */} 
         <View style={styles.fridgeGrid}>
           <View style={styles.fridgeRow}>
@@ -128,7 +120,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    height: '25%',
+    height: '30%',
     width: '100%',
   },
   fridgeButtons: {
